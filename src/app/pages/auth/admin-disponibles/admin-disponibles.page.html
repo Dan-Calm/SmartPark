@@ -1,0 +1,66 @@
+<!-- admin-disponibles.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ESTACIONAMIENTOS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/auth/administrador']" routerDirection="back">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Contenedor para los cuadros de cantidad de estacionamientos y costo por minuto -->
+  <div class="costos-container">
+    <!-- Cuadro verde con la cantidad de estacionamientos disponibles -->
+    <div class="estacionamientos-disponibles-container" [ngStyle]="{'background-color': (estacionamientosDisponibles > 0 ? 'green' : 'red')}">
+      <div class="estacionamientos-disponibles">
+        {{ estacionamientosDisponibles }}
+        <div class="estacionamientos-disponibles-text">
+          DISPONIBLES
+        </div>
+      </div>
+    </div>
+
+    <!-- Cuadro blanco con el costo por minuto -->
+    <div class="costo-por-minuto-container">
+      <div class="costo-por-minuto-text">
+        {{ costoPorMinuto | currency:'CLP $':'symbol':'1.0-0' }}<br>por minuto
+      </div>
+    </div>
+  </div>
+
+  <ion-list>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>NUMERO_EST</th>
+            <th>INGRESAR PATENTE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let estacionamiento of estacionamientos | async">
+            <td>{{ estacionamiento.numero_est }}</td>
+            <td>
+              <!-- Mostrar input solo cuando el estado del estacionamiento es true -->
+              <ion-input *ngIf="estacionamiento.estado" [(ngModel)]="estacionamiento.nuevaPatente" placeholder="Patente"></ion-input>
+              <!-- Mostrar valor extraído de la patente cuando el estado es false -->
+              <div *ngIf="!estacionamiento.estado">{{ estacionamiento.patente }}</div>
+            </td>
+            <td>
+              <ion-button [color]="estacionamiento.estado ? 'success' : 'danger'" size="small" (click)="toggleUserState(estacionamiento)">
+                {{ estacionamiento.estado ? 'ARRENDAR' : 'TERMINAR' }}
+              </ion-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>HISTORIAL</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/auth/disponibles']" routerDirection="back">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding"> 
+
+  <ion-item *ngFor="let ticket of (tickets | async)">
+    <ion-label id="ticket">
+      <p id="text-up" > INICIO: {{ formatFecha(ticket.hora_inicio) | date: 'dd/MM/yyyy HH:mm' }} </p> 
+      <p id="text"> TERMINO: {{ formatFecha(ticket.hora_final) | date: 'dd/MM/yyyy HH:mm' }} </p> 
+      <p id="text"> PATENTE: {{ ticket.patente }}</p>
+      <p id="text"> ESTACIONAMIENTO: N° {{ ticket.numero_estacionamiento }}</p>
+      <p id="text"> COSTO: ${{ ticket.costo }}</p>
+      <p id="text-down"> MINUTOS USADOS: {{ ticket.tiempo_usado }}</p>
+      <link rel="stylesheet" href="historial.page.scss"/>
+    </ion-label>
+  </ion-item>
+
+  
+</ion-content>

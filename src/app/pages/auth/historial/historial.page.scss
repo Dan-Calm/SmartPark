@@ -1,0 +1,29 @@
+#ticket {
+  margin: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  object-fit: cover;
+  border: 3px solid #3f3c3c; /* Agrega un borde de 3 píxeles y color gris claro */
+  border-radius: 15px; /* Agrega bordes redondeados de 15 píxeles */
+  overflow: hidden; /* Evita que el contenido salga del recuadro */
+  transition: transform 0.3s ease; /* Agrega una transición suave para la animación */
+}
+
+#ticket:hover {
+  transform: scale(1.05);
+  border: 3px solid #ff0000; /* Agrega un borde de 3 píxeles y color gris claro */
+}
+
+#text {
+  margin-left: 30px;
+}
+
+#text-up {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+#text-down {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}

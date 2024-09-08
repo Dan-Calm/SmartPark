@@ -1,0 +1,25 @@
+<!-- restaurar.page.html -->
+<ion-content>
+  <ion-card>
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>RESTAURAR CONTRASEÑA</ion-title>
+        <ion-buttons slot="end">
+          <ion-button [routerLink]="['/auth']" routerDirection="back">
+            <ion-icon name="arrow-back"></ion-icon>
+            <ion-label>LogIn</ion-label>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-card-content>
+      <ion-item lines="full">
+        <ion-label position="floating" name="txcorreo">Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="email" required></ion-input>
+      </ion-item>
+      <ion-button color="primary" expand="full" (click)="resetPassword()">Restaurar Contraseña</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

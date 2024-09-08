@@ -1,0 +1,99 @@
+// disponibles.page.scss
+
+.green-button {
+    --ion-color-base: #00FF00;  // Cambia el color a tu elección de verde
+  
+    // Estilos adicionales para el cuadro verde
+    width: 10px;
+    height: 5px;
+    max-height: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;  // Ajusta el margen según tus necesidades
+    border: 1px solid #000;  // Cambia el color y grosor del borde según tus preferencias
+    border-radius: 8px;  // Bordes redondeados
+    overflow: hidden;  // Para que los bordes redondeados funcionen correctamente
+  }
+  
+  .costos-container {
+    display: flex;
+    gap: 4px;  // Agrega un espacio de 4px entre los cuadros
+  }
+  
+  // Actualiza el estilo del cuadro de costo por minuto
+  .costo-por-minuto-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;  // Ajusta el ancho del contenedor
+    height: 100px;  // Establece la misma altura que el ancho
+    margin: 0px;
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    border: 4px solid #000000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  // Actualiza el estilo del texto dentro del cuadro de costo por minuto
+  .costo-por-minuto-text {
+    font-size: 1.5rem;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  // Estilo adicional para el texto de estacionamientos disponibles
+  .estacionamientos-disponibles-text {
+    font-size: 1.5rem;  // Ajusta el tamaño del texto según tus necesidades
+    padding: 8px;  // Añade un relleno alrededor del texto
+    text-align: center;  // Alinea el texto al centro
+  }
+  
+  // Resto de tu estilos existentes
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    white-space: nowrap; /* Evita que los contenidos de las celdas se dividan en varias líneas */
+  }
+  
+  .data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .data-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-container {
+    overflow-x: auto; /* Permite desplazar la tabla horizontalmente */
+    margin-bottom: 20px; /* Añade un margen inferior para mayor claridad */
+  }
+  
+  .estacionamientos-disponibles-container {
+    width: 200px;
+    height: 100px; // Ajusta el alto al mismo valor del ancho
+    margin: 0px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00FF00;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .estacionamientos-disponibles {
+    font-size: 1.5rem; // Ajusta el tamaño del texto según tus necesidades
+    color: white;
+    text-align: center; // Alinea el texto al centro
+  }
+  
+  .estacionamientos-disponibles-text {
+    font-size: 1rem; // Ajusta el tamaño del texto según tus necesidades
+    color: white;
+    text-align: center; // Alinea el texto al centro
+  }

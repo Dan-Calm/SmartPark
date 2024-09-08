@@ -1,0 +1,65 @@
+<app-header backButton="/auth" title="Registro"></app-header>
+<ion-content>
+
+  <div class="d-flex-center">
+
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+
+      <app-logo></app-logo>
+
+      <!--===== NOMBRE =====-->
+      <app-custom-input autocomplete="name" icon="person-outline" [control]="form.controls.name" type="text"
+        label="Nombre"></app-custom-input>
+
+      <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+        <div *ngIf="form.controls.name.errors?.['required']">El correo es requerido.</div>
+        <div *ngIf="form.controls.name.errors?.['minlenght']">El nombre debe tener al menos 4 caracteres.</div>
+      </div>
+
+      <!--===== PATENTE =====-->
+      <app-custom-input autocomplete="patente" icon="car-outline" [control]="form.controls.patente" type="text"
+        label="Patente"></app-custom-input>
+
+      <div class="validators" *ngIf="form.controls.patente.errors && form.controls.patente.touched">
+        <div *ngIf="form.controls.patente.errors?.['required']">El correo es requerido.</div>
+        <div *ngIf="form.controls.patente.errors?.['minlenght']">Patente no válida.</div>
+      </div>
+
+      <!--===== EMAIL =====-->
+      <app-custom-input autocomplete="email" icon="mail-outline" [control]="form.controls.email" type="email"
+        label="Correo"></app-custom-input>
+
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+        <div *ngIf="form.controls.email.errors?.['required']">El correo es requerido.</div>
+        <div *ngIf="form.controls.email.errors?.['email']">Ingrese un correo valido.</div>
+      </div>
+
+      <!--===== PASSWORD =====-->
+      <app-custom-input [control]="form.controls.password" icon="lock-closed-outline" type="password"
+        label="Contraseña"></app-custom-input>
+
+      <div class="password-requirements">
+        <div>Requisitos de la contraseña:</div>
+        <div>- Al menos 6 caracteres</div>
+        <div>- Al menos una mayúscula</div>
+        <div>- Al menos una minúscula</div>
+        <div>- Al menos un número</div>
+      </div>
+
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+        <div *ngIf="form.controls.password.errors?.['required']">La contraseña es requerida.</div>
+        <div *ngIf="form.controls.password.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
+        <div *ngIf="form.controls.password.errors?.['pattern']">La contraseña no cumple con los requisitos.</div>
+      </div>
+
+      <!--===== BOTON DE REGISTRAR =====-->
+      <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+        Registrate
+        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+      </ion-button>
+
+    </form>
+
+  </div>
+
+</ion-content>

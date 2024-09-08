@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Estadísticas</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/auth/administrador']" routerDirection="back">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-buttons>
+    <ion-button (click)="refreshStats()">
+      <ion-icon name="refresh-circle-outline"></ion-icon>
+      <ion-label>Refrescar</ion-label>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">admin-stats</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Estadísticas del día -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estadísticas del día</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Tickets creados: {{ dailyStats.createdTickets }}</p>
+      <p>Suma de costos: {{ dailyStats.totalCost }}</p>
+      <p>Tiempo promedio usado: {{ dailyStats.avgTimeUsed !== undefined ? dailyStats.avgTimeUsed : 0 }} minutos</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Estadísticas mensuales -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estadísticas mensuales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Tickets creados: {{ monthlyStats.createdTickets }}</p>
+      <p>Suma de costos: {{ monthlyStats.totalCost }}</p>
+      <p>Tiempo promedio usado: {{ monthlyStats.avgTimeUsed !== undefined ? monthlyStats.avgTimeUsed : 0 }} minutos</p>
+    </ion-card-content>
+  </ion-card>
+
+<!-- Resumen mensual -->
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Resumen Mensual</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>Días transcurridos: {{ daysInMonth }}</p>
+    <ion-list>
+      <ion-item *ngFor="let tickets of ticketsPerDay; let i = index">
+        Día {{ i + 1 }}: {{ tickets }} tickets
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

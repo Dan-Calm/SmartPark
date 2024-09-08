@@ -1,0 +1,31 @@
+<!-- datos-auto.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Datos del Automóvil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/auth/disponibles']" routerDirection="back">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Marca</ion-label>
+    <ion-input type="text" [(ngModel)]="marca" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Modelo</ion-label>
+    <ion-input type="text" [(ngModel)]="modelo" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Año</ion-label>
+    <ion-input type="number" [(ngModel)]="ano" required></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" color="primary" (click)="guardarDatosAuto()">Guardar Datos</ion-button>
+</ion-content>

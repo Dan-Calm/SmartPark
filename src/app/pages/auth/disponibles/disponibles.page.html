@@ -1,0 +1,84 @@
+<!-- disponibles.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ESTACIONAMIENTOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Contenedor para los cuadros de cantidad de estacionamientos y costo por minuto -->
+  <div class="costos-container">
+    
+<!-- Contenedor para los cuadros de cantidad de estacionamientos y costo por minuto -->
+<div class="costos-container">
+  <!-- Cuadro verde con la cantidad de estacionamientos disponibles -->
+  <div class="estacionamientos-disponibles-container" [ngStyle]="{'background-color': (estacionamientosDisponibles > 0 ? 'green' : 'red')}">
+    <div class="estacionamientos-disponibles">
+      {{ estacionamientosDisponibles }}
+      <div class="estacionamientos-disponibles-text">
+        DISPONIBLES
+      </div>
+    </div>
+  </div>
+
+  <!-- Cuadro blanco con el costo por minuto -->
+  <div class="costo-por-minuto-container">
+    <div class="costo-por-minuto-text">
+      {{ costoPorMinuto | currency:'CLP $':'symbol':'1.0-0' }}<br>por minuto
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <ion-list>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>NÚMERO DE ESTACIONAMIENTO</th>
+            <th>USUARIO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let estacionamiento of estacionamientos | async">
+            <td>{{ estacionamiento.numero_est }}</td>
+            <td>{{ estacionamiento.patente }}</td>
+            <td>
+              <ion-button [color]="estacionamiento.estado ? 'success' : 'danger'" size="small" (click)="toggleUserState(estacionamiento)">
+                {{ estacionamiento.estado ? 'ARRENDAR' : 'TERMINAR' }}
+              </ion-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ion-list>
+
+  <ion-content>
+
+    <ion-button expand="block" mode="ios" (click)="pago()">
+      Pagar Ticket
+      <ion-icon slot="end" name="cash-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button expand="block" mode="ios" (click)="historial()">
+      Historial
+      <ion-icon slot="end" name="clipboard-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button expand="block" mode="ios" (click)="datosAuto()">
+      Datos Automóvil
+      <ion-icon slot="end" name="car-outline"></ion-icon>
+    </ion-button>
+  
+    <ion-button expand="block" mode="ios" (click)="cerrarSesion()">
+      Cerrar Sesión
+      <ion-icon slot="end" name="log-out-outline"></ion-icon>
+    </ion-button>
+
+  </ion-content>
+
+</ion-content>

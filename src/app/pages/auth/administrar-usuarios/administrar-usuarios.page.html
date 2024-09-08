@@ -1,0 +1,29 @@
+<!-- administrar-usuarios.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrar Usuarios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/auth/administrador']" routerDirection="back">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarios">
+      <ion-label>{{ usuario.email }}</ion-label>
+      <ion-button [color]="usuario.tipo_usuario === 1 ? 'success' : 'danger'" size="small"
+        (click)="cambiarTipoUsuario(usuario)">
+        {{ usuario.tipo_usuario === 1 ? 'HACER ADMINISTRADOR' : 'HACER CLIENTE' }}
+      </ion-button>
+
+      <!-- Nuevo botón para eliminar con estilo personalizado -->
+      <ion-button color="black" fill="outline" size="small" (click)="confirmarEliminacion(usuario)">
+        <ion-icon name="trash" color="white"></ion-icon> ELIMINAR
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

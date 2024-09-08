@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Panel de Administración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <!-- Primera columna: Costo por Minuto y Cantidad de Estacionamientos -->
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="costoForm">
+          <ion-item>
+            <ion-label position="floating">Costo por Minuto: {{ costoPorMinuto | currency:'CLP $':'symbol':'1.0-0' }}</ion-label>
+            <ion-input formControlName="costoPorMinuto" type="number" step="any"></ion-input>
+          </ion-item>
+          <ion-button expand="full" (click)="guardarCostoPorMinuto()" color="primary">
+            Guardar Costo por Minuto
+          </ion-button>
+        </form>
+      </ion-col>
+
+      <ion-col>
+        <form [formGroup]="cantidadEstacionamientosForm">
+          <ion-item>
+            <ion-label position="floating">Cantidad de Estacionamientos Disponibles</ion-label>
+            <ion-input formControlName="cantidadEstacionamientos" type="number" step="1"></ion-input>
+          </ion-item>
+          <ion-button expand="full" (click)="gestionarCantidadEstacionamientos()" color="primary">
+            Gestionar Cantidad de Estacionamientos
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <!-- Segunda columna: Agregar y Eliminar Estacionamientos -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="agregarUnEstacionamiento()" color="tertiary">
+          Agregar 1 Estacionamiento
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button expand="full" (click)="eliminarUltimoEstacionamiento()" color="tertiary">
+          Eliminar Último Estacionamiento
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Tercera columna: Enlaces a otras páginas -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" [routerLink]="['/auth/admin-disponibles']" color="secondary">
+          ADMINISTRAR ESTACIONAMIENTOS
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button expand="full" [routerLink]="['/auth/historial-admin']" color="secondary">
+          Ver Historial Admin
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button expand="full" [routerLink]="['/auth/administrar-usuarios']" color="secondary">
+          Administrar Usuarios
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Cuarta columna: Ver Estadísticas y Cerrar Sesión -->
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" [routerLink]="['/auth/admin-stats']" color="secondary">
+          Ver Estadísticas
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button expand="full" mode="ios" (click)="cerrarSesion()" color="danger">
+          Cerrar Sesión
+          <ion-icon slot="end" name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
